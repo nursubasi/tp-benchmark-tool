@@ -5,3 +5,21 @@ description = ""
 authors = ["Your Name <you@example.com>"]
 requires-python = ">=3.11"
 dependencies = []
+
+[tool.poetry]
+name = "workspace"
+version = "0.1.0"
+description = ""
+authors = ["Nur Subasi <41734271-nursubasi@users.noreply.replit.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pandas = "*"
+openpyxl = "*"
+openai = "^1.75.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
