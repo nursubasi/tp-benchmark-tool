@@ -1,6 +1,9 @@
 import pandas as pd
+import os
+from openai import OpenAI
+import time
 
-# Assuming the Excel file is directly in your project root directory
+# Excel file 
 excel_file = 'Example BM Study - potential comparables 1st iteration.xlsx'
 
 # Read the Excel file
@@ -42,22 +45,22 @@ Please answer with "Comparable" or "Not Comparable", and explain your reasoning 
 for i, p in enumerate(prompts[:3], 1):
     print(f"\n--- Prompt {i} ---\n{p}\n")
 
-# Show how many prompts are created in total
-print(f"\nTotal prompts created: {len(prompts)}")
-
-import os
-from openai import OpenAI
-
 # Get API key from environment
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-# Send a simple test message
-response = client.chat.completions.create(
-    model="gpt-3.5-turbo",
-    messages=[
-        {"role": "user", "content": "Hello!"}
-    ]
-)
-
-print("GPT Response:\n", response.choices[0].message.content)
+# Send prompts to GPT and collect responses
+results = []
+for i, prompt in enumerate(prompts):
+    try:
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[{"role": "user", "content": prompt}]
+        )
+        answer = response.choices[0].message.content
+        print(f"\n Prompt {i+1} GPT Response:\n{answer}\n")
+        results.append({"Prompt": prompt, "GPT Response": answer})
+        time.sleep(1.5)  # Safe delay to avoid hitting the rate limit
+    except Exception as e:
+        print(f" Error occurred (Prompt {i+1}): {e}")
+        results.append({"Prompt": prompt, "GPT Response": f"ERROR: {e}"})
 
