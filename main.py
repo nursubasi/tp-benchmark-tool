@@ -44,3 +44,20 @@ for i, p in enumerate(prompts[:3], 1):
 
 # Show how many prompts are created in total
 print(f"\nTotal prompts created: {len(prompts)}")
+
+import os
+from openai import OpenAI
+
+# Get API key from environment
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+# Send a simple test message
+response = client.chat.completions.create(
+    model="gpt-3.5-turbo",
+    messages=[
+        {"role": "user", "content": "Hello!"}
+    ]
+)
+
+print("GPT Response:\n", response.choices[0].message.content)
+
