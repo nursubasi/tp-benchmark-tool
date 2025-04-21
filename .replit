@@ -16,7 +16,7 @@ run = ["python3", "main.py"]
 deploymentTarget = "cloudrun"
 
 [workflows]
-runButton = "Run Python"
+runButton = "Streamlit"
 
 [[workflows.workflow]]
 name = "Streamlit"
