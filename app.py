@@ -15,6 +15,7 @@ if st.button("Run GPT Analysis"):
     if not tested_party_description or not uploaded_file:
         st.warning("Please provide both the tested party description and an Excel file.")
     else:
+        df = pd.read_excel(uploaded_file)
         st.success("Inputs received. Analysis will run here soon...")
 
 # Placeholder for showing prompt results (future)
