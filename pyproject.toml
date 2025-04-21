@@ -18,6 +18,8 @@ python = "^3.11"
 pandas = "*"
 openpyxl = "*"
 openai = "^1.75.0"
+beautifulsoup4 = "^4.13.4"
+requests = "^2.32.3"
 
 
 [build-system]
