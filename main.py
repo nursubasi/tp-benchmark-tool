@@ -10,7 +10,6 @@ excel_file = 'Example BM Study - potential comparables 3rd iteration.xlsx'
 
 # Read the Excel file
 df = pd.read_excel(excel_file)
-df = df.head(2)  # TEMPORARY: Only use first 2 rows for testing
 
 
 # Fixed tested party explanation 
