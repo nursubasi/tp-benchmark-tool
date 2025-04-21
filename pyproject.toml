@@ -20,6 +20,7 @@ openpyxl = "*"
 openai = "^1.75.0"
 beautifulsoup4 = "^4.13.4"
 requests = "^2.32.3"
+streamlit = "^1.44.1"
 
 
 [build-system]
